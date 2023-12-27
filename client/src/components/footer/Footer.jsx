@@ -5,7 +5,7 @@ import creditcardImg from "../../assets/Credit-Card-Icons.png";
 
 function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="container">
         <div className="content">
           <div className="footer-left">
@@ -44,7 +44,7 @@ function Footer() {
           </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 
