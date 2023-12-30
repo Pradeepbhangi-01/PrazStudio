@@ -18,12 +18,16 @@
         gap: 8px;
 
         li {
-          width: 36px;
-          height: 36px;
+          width: 40px;
+          height: 40px;
+          border-radius: 10%;
+          display: flex;
+          align-items: center;
+          padding-left: 10px;
           border-radius: 50%;
 
           &:hover {
-            background-color: rgb(117, 19, 19);
+            background-color: white;
           }
         }
       }
@@ -33,6 +37,7 @@
       .company {
         li {
           margin-top: 10px;
+          color: var(--secondary-text-color);
 
           &:hover {
             color: var(--accent-color);

@@ -10,6 +10,10 @@ function Categories() {
   const [categoryId, setCategoryId] = useState("");
   const categoryList = [
     {
+      id: "albums",
+      value: "albums",
+    },
+    {
       id: "photos",
       value: "photos",
     },
@@ -17,14 +21,10 @@ function Categories() {
       id: "videos",
       value: "videos",
     },
-    {
-      id: "albums",
-      value: "albums",
-    },
   ];
 
   function updateCategory(e) {
-    navigate(`/category/${e.target.value}`);
+    navigate(`/categories/${e.target.value}`);
   }
 
   useEffect(() => {

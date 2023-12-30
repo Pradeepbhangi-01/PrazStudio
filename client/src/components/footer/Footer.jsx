@@ -10,7 +10,7 @@ function Footer() {
         <div className="content">
           <div className="footer-left">
             <h3 className="title">Follow Us</h3>
-            <ul className="follow">
+            <ul className="follow ">
               <li className="hover-link">
                 <FaInstagram />
               </li>
