@@ -1,24 +1,39 @@
 import React from "react";
 import dummyCartImg from "../../assets/banner.jpg";
 import { FaWindowClose } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "../../redux/cartSlice";
 import "./Cartitem.scss";
 
 function Cartitem() {
+  const dispatch = useDispatch();
   return (
-    <div className="cartItem">
+    <div className="CartItem">
       <div className="item-img">
-        <img src={dummyCartImg} alt="" />
+        <img src={cart.image} alt="" />
       </div>
       <div className="item-info-wrapper">
         <div className="item-info">
-          <p className="title">Product title here</p>
-          <p className="price"> ₹456</p>
+          <p className="title">{cart.title}</p>
+          <p className="price">₹ {cart.price}</p>
           <div className="quantity-selector">
-            <span className="btn decrement">-</span>
-            <span className="quantity">5</span>
-            <span className="btn increment">+</span>
+            <span
+              className="btn decrement"
+              onClick={() => dispatch(removeFromCart(cart))}
+            >
+              -
+            </span>
+            <span className="quantity">{cart.quantity}</span>
+            <span
+              className="btn increment"
+              onClick={() => dispatch(addToCart(cart))}
+            >
+              +
+            </span>
           </div>
-          <p className="total-price">Subtotal: ₹6778</p>
+          <p className="total-price">
+            Subtotal: ₹ {cart.quantity * cart.price}
+          </p>
         </div>
         <div className="item-remove">
           <FaWindowClose />

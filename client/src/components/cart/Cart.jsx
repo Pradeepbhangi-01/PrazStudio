@@ -1,9 +1,35 @@
 import React from "react";
 import { FaWindowClose } from "react-icons/fa";
+import { BsCartX } from "react-icons/bs";
 import "./Cart.scss";
-import Cartitem from "../cartItem/Cartitem";
+import CartItem from "../cartItem/Cartitem";
+// import { loadStripe } from "@stripe/stripe-js";
 
 function Cart({ onClose }) {
+  const cart = useSelector((state) => state.cartReducer.cart);
+  let totalAmount = 0;
+  cart.forEach((item) => (totalAmount += item.quantity * item.price));
+  const isCartEmpty = cart.length === 0;
+
+  async function handleCheckout() {
+    try {
+      const response = await axiosClient.post("/orders", {
+        products: cart,
+      });
+
+      const stripe = await loadStripe(
+        `${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}`
+      );
+      const data = await stripe.redirectToCheckout({
+        sessionId: response.data.stripeId,
+      });
+
+      console.log("stripe data", data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="cart">
       <div className="overlay" onClick={onClose}></div>
@@ -16,18 +42,31 @@ function Cart({ onClose }) {
           </div>
         </div>
         <div className="cart-items">
-          <Cartitem />
-          <Cartitem />
-          <Cartitem />
+          {cart.map((item) => (
+            <CartItem key={item.key} cart={item} />
+          ))}
         </div>
 
-        <div className="checkout-info">
-          <div className="total-amount">
-            <h3 className="total-message">Total:</h3>
-            <h3 className="total-value">₹4567</h3>
+        {isCartEmpty && (
+          <div className="empty-cart-info">
+            <div className="icon">
+              <BsCartX />
+            </div>
+            <h4>Cart is Empty</h4>
           </div>
-          <div className="checkout btn-primary">Checkout now</div>
-        </div>
+        )}
+
+        {!isCartEmpty && (
+          <div className="checkout-info">
+            <div className="total-amount">
+              <h3 className="total-message">Total:</h3>
+              <h3 className="total-value">₹ {totalAmount}</h3>
+            </div>
+            <div className="checkout btn-primary" onClick={handleCheckout}>
+              Checkout now
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

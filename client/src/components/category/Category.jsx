@@ -7,12 +7,12 @@ function Category({ category }) {
     <div
       className="category"
       style={{
-        backgroundImage: `url(${category.attributes.image.data.attributes.url})`,
+        backgroundImage: `url(${category?.attributes.image?.data.attributes.url})`,
       }}
-      onClick={() => navigate(`/categories/${category.attributes.key}`)}
+      onClick={() => navigate(`/category/${category?.attributes.key}`)}
     >
       <div className="category-content center">
-        <h3 className="heading">{category.attributes.title}</h3>
+        <h3 className="heading">{category?.attributes.title}</h3>
       </div>
     </div>
   );

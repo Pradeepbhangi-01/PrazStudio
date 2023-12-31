@@ -14,7 +14,7 @@ function Product({ product }) {
         <div className="product-img">
           <div className="img-container">
             <img
-              src={product?.attributes.image.data.attributes.url}
+              src={product?.attributes.image.data?.attributes.url}
               alt="product img"
               id="img"
             />

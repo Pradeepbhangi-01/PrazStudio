@@ -13,7 +13,7 @@ function Hero() {
         </p>
         <button
           className="cta btn-primary"
-          onClick={() => navigate("/categories")}
+          onClick={() => navigate("/category")}
         >
           Explore More
         </button>
