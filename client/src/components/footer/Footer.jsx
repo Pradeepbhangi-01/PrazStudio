@@ -1,7 +1,7 @@
 import React from "react";
-import { FaInstagram, FaYoutube, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
 import "./Footer.scss";
-import creditcardImg from "../../assets/Credit-Card-Icons.png";
+import creditcardImg from "../../assets/creditcardicons.png";
 
 function Footer() {
   return (
@@ -12,14 +12,19 @@ function Footer() {
             <h3 className="title">Follow Us</h3>
             <ul className="follow ">
               <li className="hover-link">
-                <FaInstagram />
+                <a href="https://www.instagram.com/prazstudio/" target="_blank">
+                  <FaInstagram />
+                </a>
               </li>
               <li className="hover-link">
-                <FaLinkedin />
+                <a
+                  href="https://www.youtube.com/channel/UCIHRFNikrz30H10k3skim9Q"
+                  target="_blank"
+                >
+                  <FaYoutube />
+                </a>
               </li>
-              <li className="hover-link">
-                <FaYoutube />
-              </li>
+
               <li className="hover-link">
                 <FaTwitter />
               </li>

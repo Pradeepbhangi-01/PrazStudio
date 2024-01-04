@@ -10,6 +10,7 @@ function Collection() {
   const params = useParams();
 
   const [categoryId, setCategoryId] = useState("");
+
   const categories = useSelector((state) => state.categoryReducer.categories);
   const [products, setProducts] = useState([]);
 
@@ -23,6 +24,9 @@ function Collection() {
       sort: "createdAt",
     },
   ];
+
+  const [sortBy, setSortBy] = useState(sortOptions[0].sort);
+
   function updateCategory(e) {
     navigate(`/category/${e.target.value}`);
   }
@@ -38,7 +42,7 @@ function Collection() {
   useEffect(() => {
     setCategoryId(params.categoryId);
     fetchProducts();
-  }, [params]);
+  }, [params, sortBy]);
 
   return (
     <div className="categories">

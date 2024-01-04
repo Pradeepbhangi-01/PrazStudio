@@ -3,8 +3,11 @@ import { FaWindowClose } from "react-icons/fa";
 import { BsCartX } from "react-icons/bs";
 import "./Cart.scss";
 import CartItem from "../cartItem/Cartitem";
-// import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { useSelector } from "react-redux";
+import { axiosClient } from "../../utils/axiosClient";
 
+// import { loadStripe } from "@stripe/stripe-js";
 function Cart({ onClose }) {
   const cart = useSelector((state) => state.cartReducer.cart);
   let totalAmount = 0;
@@ -18,7 +21,7 @@ function Cart({ onClose }) {
       });
 
       const stripe = await loadStripe(
-        `${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}`
+        `${import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY}`
       );
       const data = await stripe.redirectToCheckout({
         sessionId: response.data.stripeId,

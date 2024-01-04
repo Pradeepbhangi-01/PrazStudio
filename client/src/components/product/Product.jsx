@@ -1,6 +1,6 @@
 import React from "react";
 import "./Product.scss";
-import dummyImg from "../../assets/banner.jpg";
+
 import { useNavigate } from "react-router-dom";
 
 function Product({ product }) {

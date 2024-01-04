@@ -1,14 +1,13 @@
 import React from "react";
-import dummyCartImg from "../../assets/banner.jpg";
 import { FaWindowClose } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../../redux/cartSlice";
 import "./Cartitem.scss";
 
-function Cartitem() {
+function Cartitem({ cart }) {
   const dispatch = useDispatch();
   return (
-    <div className="CartItem">
+    <div className="cartItem">
       <div className="item-img">
         <img src={cart.image} alt="" />
       </div>

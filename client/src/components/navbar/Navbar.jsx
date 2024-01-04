@@ -18,7 +18,7 @@ function Navbar() {
         <div className="container nav-container">
           <div className="nav-left">
             <ul className="link-group">
-              {categories.map((category) => {
+              {categories?.map((category) => {
                 <li className="hover-link" key={category.id}>
                   <Link
                     className="link"
